@@ -1,10 +1,10 @@
 #include <Geode/Geode.hpp>
-
+#include <Geode/modify/PauseLayer.hpp>
 using namespace geode::prelude;
 #include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
-bool l = true
+bool l = true;
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
     switch(gamemode) {
@@ -50,4 +50,10 @@ bool init(GJGameLevel* level, bool p1, bool p2) {
 
         return true;
     }
+}
+class $modify(PauseLayer) {
+void onQuit(CCObject* sender) {
+		PauseLayer::onQuit(sender);
+		l = false;
+	}
 }
