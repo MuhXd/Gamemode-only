@@ -41,8 +41,6 @@ class $modify(layer, GJBaseGameLayer) {
 	}
 };
 class $modify(PlayerObject) {
-	auto playLayer = PlayLayer::get();
-	if (playLayer) {
+ if (!GameManager::sharedState()->getPlayLayer() && !GameManager::sharedState()->getEditorLayer()) return;
 	Switch(0,PlayerObject); // on add or somthing
-	};
 };
