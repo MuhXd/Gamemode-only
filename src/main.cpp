@@ -4,7 +4,7 @@ using namespace geode::prelude;
 #include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
-bool l = true;
+int l = true;
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
     switch(gamemode) {
@@ -30,7 +30,7 @@ void Switch(int gamemode, auto Plr) {
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) {
         GJBaseGameLayer::update(delta);
-        if (l) {
+        if (l <= 0) {
 	int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
 		auto playLayer = PlayLayer::get();
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
@@ -40,20 +40,23 @@ class $modify(layer, GJBaseGameLayer) {
 		};
 		};
 	}
+    else {
+        l-=delta;
+    }
         }
 };
 class $modify(lg, PlayLayer) {
 bool init(GJGameLevel* level, bool p1, bool p2) {
-        if (!PlayLayer::init(level, p1, p2)) l=false; return false;
+        if (!PlayLayer::init(level, p1, p2)) l=10; return false;
 
-        l = true;
+        l = 10;
 
         return true;
     }
-}
+};
 class $modify(PauseLayer) {
 void onQuit(CCObject* sender) {
 		PauseLayer::onQuit(sender);
-		l = false;
+		l = 10;
 	}
-}
+};
