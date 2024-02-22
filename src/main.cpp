@@ -34,4 +34,4 @@ class $modify(layer, GJBaseGameLayer) {
         GJBaseGameLayer::update(delta);
 		Switch(0);
 	}
-}
+};
