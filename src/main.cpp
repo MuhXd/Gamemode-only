@@ -5,39 +5,37 @@ using namespace geode::prelude;
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
 
-void Switch(int gamemode, bool Plr) {
+void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
-	auto player = playLayer->m_player2;
-	if (Plr) {
-    auto player = playLayer->m_player1;
-	};
     switch(gamemode) {
         case 0:
-        player->toggleFlyMode(false, false);
-        player->toggleRollMode(false, false);
-        player->toggleBirdMode(false, false);
-        player->toggleDartMode(false, false);
-        player->toggleRobotMode(false, false);
-        player->toggleSpiderMode(false, false);
-        player->toggleSwingMode(false, false);
+        Plr->toggleFlyMode(false, false);
+        Plr->toggleRollMode(false, false);
+        Plr->toggleBirdMode(false, false);
+        Plr->toggleDartMode(false, false);
+        Plr->toggleRobotMode(false, false);
+        Plr->toggleSpiderMode(false, false);
+        Plr->toggleSwingMode(false, false);
         break;
-        case 1: player->toggleFlyMode(true, true); break; 
-        case 2: player->toggleRollMode(true, true); break;
-        case 3: player->toggleBirdMode(true, true); break;
-        case 4: player->toggleDartMode(true, true); break;
-        case 5: player->toggleRobotMode(true, true); break;
-        case 6: player->toggleSpiderMode(true, true); break;
-        case 7: player->toggleSwingMode(true, true); break;
+        case 1: Plr->toggleFlyMode(true, true); break; 
+        case 2: Plr->toggleRollMode(true, true); break;
+        case 3: Plr->toggleBirdMode(true, true); break;
+        case 4: Plr->toggleDartMode(true, true); break;
+        case 5: Plr->toggleRobotMode(true, true); break;
+        case 6: Plr->toggleSpiderMode(true, true); break;
+        case 7: Plr->toggleSwingMode(true, true); break;
 	}
 }
 
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) override {
         GJBaseGameLayer::update(delta);
+		int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode")
+		auto playLayer = PlayLayer::get();
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
-		Switch(Mod::get()->getSettingValue<int64_t>("Gamemode"),true);
+		Switch(gamemodeid,playLayer->m_player1);
 		if (Mod::get()->getSettingValue<bool>("2nd-player")) {
-			Switch(Mod::get()->getSettingValue<int64_t>("Gamemode"),false);
+			Switch(gamemodeid,playLayer->m_player2);
 		};
 		};
 	}
