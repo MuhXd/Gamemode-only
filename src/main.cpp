@@ -5,7 +5,7 @@ using namespace geode::prelude;
 #include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
-int l = true;
+int l = 10;
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
     switch(gamemode) {
