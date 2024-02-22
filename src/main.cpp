@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 
 using namespace geode::prelude;
-
+#include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
 
@@ -28,7 +28,7 @@ void Switch(int gamemode, auto Plr) {
 }
 
 class $modify(layer, GJBaseGameLayer) {
-    void update(float delta) override {
+    void update(float delta) {
         GJBaseGameLayer::update(delta);
 		int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
 		auto playLayer = PlayLayer::get();
@@ -38,5 +38,11 @@ class $modify(layer, GJBaseGameLayer) {
 			Switch(gamemodeid,playLayer->m_player2);
 		};
 		};
+	}
+};
+class $modify(PlayerObject) {
+	auto playLayer = PlayLayer::get();
+	if (playLayer) {
+	Switch(0,PlayerObject); // on add or somthing
 	}
 };
