@@ -6,7 +6,7 @@ using namespace geode::prelude;
 #include <Geode/binding/GJBaseGameLayer.hpp>
 
 void Switch(int sender) {
-    int tag = sender
+    int tag = sender;
 	auto playLayer = PlayLayer::get();
     auto player1 = playLayer->m_player1;
     switch(tag) {
@@ -32,6 +32,6 @@ void Switch(int sender) {
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) override {
         GJBaseGameLayer::update(delta);
-		Switch(0)
+		Switch(0);
 	}
 }
