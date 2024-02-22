@@ -7,7 +7,7 @@ using namespace geode::prelude;
 
 void Switch(int gamemode, bool Plr) {
 	auto playLayer = PlayLayer::get();
-	auto player = playLayer->m_player2
+	auto player = playLayer->m_player2;
 	if (Plr) {
     auto player = playLayer->m_player1;
 	};
@@ -34,11 +34,11 @@ void Switch(int gamemode, bool Plr) {
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) {
         GJBaseGameLayer::update(delta);
-		if Mod::get()->getSettingValue<bool>("Enabled") {
+		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(Mod::get()->getSettingValue<int64_t>("Gamemode"),true);
 		if (Mod::get()->getSettingValue<bool>("2nd-player")) {
 			Switch(Mod::get()->getSettingValue<int64_t>("Gamemode"),false);
 		};
-		}
+		};
 	}
 };
