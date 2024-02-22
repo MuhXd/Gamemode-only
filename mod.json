@@ -9,5 +9,29 @@
 	"id": "viper.gamemode_only",
 	"name": "Gamemode only",
 	"developer": "Viper",
-	"description": "A mod that makes it so you can't use portals. inspired by only cube challange on youtube"
+	"description": "A mod that makes it so you can't use gamemode portals. inspired by only cube challange on youtube",
+	"settings": {
+		"Enabled": {
+			"name": "Enabled",
+			"type": "bool",
+			"default": true,
+			"description": "Enables/disables mod without restart"
+		},
+		"2nd-player": {
+			"name": "2nd player",
+			"type": "bool",
+			"default": true,
+			"description": "Makes it effect second player"
+		},
+		"Gamemode": {
+            "name": "Gamemode",
+            "type": "int",
+            "default": 0,
+            "min": 0,
+            "max": 7,
+            "control": {
+                "slider": false
+            }
+        }
+	}
 }
