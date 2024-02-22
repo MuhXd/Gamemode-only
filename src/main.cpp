@@ -4,7 +4,7 @@ using namespace geode::prelude;
 #include <Geode/modify/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
-
+bool l = true
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
     switch(gamemode) {
@@ -30,7 +30,8 @@ void Switch(int gamemode, auto Plr) {
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) {
         GJBaseGameLayer::update(delta);
-		int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
+        if (l) {
+	int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
 		auto playLayer = PlayLayer::get();
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(gamemodeid,playLayer->m_player1);
@@ -39,11 +40,14 @@ class $modify(layer, GJBaseGameLayer) {
 		};
 		};
 	}
+        }
 };
-class $modify(PlayerObject) {
- bool init(int po, int p1, GJBaseGameLayer* p2, cocos2d::CCLayer* p3, bool p4) {
- if (!GameManager::sharedState()->getPlayLayer() && !GameManager::sharedState()->getEditorLayer()) return true;
-	Switch(0,this); // on add or somthing
-return true;
- }
-};
+class $modify(lg, PlayLayer) {
+bool init(GJGameLevel* level, bool p1, bool p2) {
+        if (!PlayLayer::init(level, p1, p2)) l=false; return false;
+
+        l = true;
+
+        return true;
+    }
+}
