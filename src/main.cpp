@@ -30,7 +30,7 @@ void Switch(int gamemode, auto Plr) {
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) override {
         GJBaseGameLayer::update(delta);
-		int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode")
+		int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
 		auto playLayer = PlayLayer::get();
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(gamemodeid,playLayer->m_player1);
