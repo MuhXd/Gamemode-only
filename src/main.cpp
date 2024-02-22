@@ -44,5 +44,5 @@ class $modify(PlayerObject) {
 	auto playLayer = PlayLayer::get();
 	if (playLayer) {
 	Switch(0,PlayerObject); // on add or somthing
-	}
+	};
 };
