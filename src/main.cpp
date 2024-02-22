@@ -41,6 +41,9 @@ class $modify(layer, GJBaseGameLayer) {
 	}
 };
 class $modify(PlayerObject) {
- if (!GameManager::sharedState()->getPlayLayer() && !GameManager::sharedState()->getEditorLayer()) return;
+ bool init(int po, int p1, GJBaseGameLayer* p2, cocos2d::CCLayer* p3, bool p4) {
+ if (!GameManager::sharedState()->getPlayLayer() && !GameManager::sharedState()->getEditorLayer())  {return}
 	Switch(0,PlayerObject); // on add or somthing
+return true
+ }
 };
