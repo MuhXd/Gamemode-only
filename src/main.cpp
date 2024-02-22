@@ -32,7 +32,7 @@ void Switch(int gamemode, bool Plr) {
 }
 
 class $modify(layer, GJBaseGameLayer) {
-    void update(float delta) {
+    void update(float delta) override {
         GJBaseGameLayer::update(delta);
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(Mod::get()->getSettingValue<int64_t>("Gamemode"),true);
