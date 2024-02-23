@@ -46,15 +46,7 @@ class $modify(layer, GJBaseGameLayer) {
     }
         }
 };
-class $modify(lg, PlayLayer) {
-bool init(GJGameLevel* level, bool p1, bool p2) {
-        if (!PlayLayer::init(level, p1, p2)) l=10; return false;
 
-        l = 10;
-
-        return true;
-    }
-};
 class $modify(PauseLayer) {
 void onQuit(CCObject* sender) {
 		PauseLayer::onQuit(sender);
