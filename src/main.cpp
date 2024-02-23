@@ -8,6 +8,7 @@ using namespace geode::prelude;
 int l = 10;
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
+            l-=1;
     switch(gamemode) {
         case 0:
         Plr->toggleFlyMode(false, false);
@@ -42,7 +43,7 @@ class $modify(layer, GJBaseGameLayer) {
 		};
 	}
     else {
-        l-=delta;
+        Switch(0,playLayer->m_player1)
     }
         }
 };
