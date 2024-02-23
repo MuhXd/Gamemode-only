@@ -22,16 +22,7 @@
 			"type": "bool",
 			"default": true,
 			"description": "Makes it effect second player"
-		},
-		"Gamemode": {
-            "name": "Gamemode",
-            "type": "int",
-            "default": 0,
-            "min": 0,
-            "max": 7,
-            "control": {
-                "slider": false
-            }
-        }
+		}
+		
 	}
 }

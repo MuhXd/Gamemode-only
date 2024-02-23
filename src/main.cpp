@@ -6,6 +6,18 @@ using namespace geode::prelude;
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
 int l = 10;
+/*
+"Gamemode": {
+            "name": "Gamemode",
+            "type": "int",
+            "default": 0,
+            "min": 0,
+            "max": 7,
+            "control": {
+                "slider": false
+            }
+        }
+        */
 void Switch(int gamemode, auto Plr) {
 	auto playLayer = PlayLayer::get();
             l-=1;
@@ -34,7 +46,7 @@ class $modify(layer, GJBaseGameLayer) {
         GJBaseGameLayer::update(delta);
         auto playLayer = PlayLayer::get();
         if (l <= 0) {
-	int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
+	int gamemodeid = 0;
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(gamemodeid,playLayer->m_player1);
 		if (Mod::get()->getSettingValue<bool>("2nd-player")) {
