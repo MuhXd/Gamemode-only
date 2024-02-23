@@ -47,9 +47,7 @@ class $modify(layer, GJBaseGameLayer) {
         GJBaseGameLayer::update(delta);
         auto playLayer = PlayLayer::get();
         if (l <= 0) {
-	int gamemodeid = 7; //Mod::get()->getSettingValue<int64_t>("Gamemode");
-       auto object = GameManager::sharedState()->getEditorLayer()->createObject(12, ccp(0, 0), true);
-        PlayLayer::addObject(object)
+	int gamemodeid = 0; //Mod::get()->getSettingValue<int64_t>("Gamemode");
 		if (Mod::get()->getSettingValue<bool>("Enabled")) {
 		Switch(gamemodeid,playLayer->m_player1);
 		if (Mod::get()->getSettingValue<bool>("2nd-player")) {
