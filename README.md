@@ -1,3 +1,3 @@
 # Gamemodeonly
 
-This is where she makes a mod.
+This is where yall make a scuffed mod.
