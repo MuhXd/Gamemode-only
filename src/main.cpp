@@ -43,7 +43,7 @@ class $modify(layer, GJBaseGameLayer) {
 		};
 	}
     else {
-        Switch(0,playLayer->m_player1)
+        Switch(0,playLayer->m_player1);
     }
         }
 };
