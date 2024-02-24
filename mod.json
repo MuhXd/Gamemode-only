@@ -6,8 +6,8 @@
 		"mac": "2.200"
 	},
 	"version": "v0.0.1",
-	"id": "viper.gamemode_only",
-	"name": "Gamemode only",
+	"id": "viper.Gamemode_Only",
+	"name": "Single Gamemode",
 	"developer": "Viper",
 	"description": "A mod that makes it so you can't use gamemode portals. inspired by only cube challange on youtube",
 	"settings": {
