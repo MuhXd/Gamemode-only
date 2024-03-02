@@ -3,10 +3,13 @@
 #include <Geode/modify/PlayLayer.hpp>
 using namespace geode::prelude;
 #include <Geode/modify/PlayerObject.hpp>
+#include <Geode/binding/PlayerObject.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/binding/GJBaseGameLayer.hpp>
 #include <Geode/binding/GameObject.hpp>
 int l = 10;
+float y = 0;
+bool bump = false;
 /*
 "Gamemode": {
             "name": "Gamemode",
@@ -20,8 +23,13 @@ int l = 10;
         }
         */
 void Switch(int gamemode, auto Plr) {
-	auto playLayer = PlayLayer::get();
-            l-=1;
+    l-=1;
+    if (!Mod::get()->getSettingValue<bool>("Enabled")) {
+        return;
+    };
+    if (l > 0) {
+        return;
+    };
     switch(gamemode) {
         case 0:
         Plr->toggleFlyMode(false, false);
@@ -42,28 +50,23 @@ void Switch(int gamemode, auto Plr) {
 	}
 }
 
+
 class $modify(layer, GJBaseGameLayer) {
     void update(float delta) {
         GJBaseGameLayer::update(delta);
-        auto playLayer = PlayLayer::get();
-        if (l <= 0) {
-	int gamemodeid = 0; //Mod::get()->getSettingValue<int64_t>("Gamemode");
-		if (Mod::get()->getSettingValue<bool>("Enabled")) {
+        auto playLayer = this;
+	int gamemodeid = 0; //
+    //int gamemodeid = Mod::get()->getSettingValue<int64_t>("Gamemode");
 		Switch(gamemodeid,playLayer->m_player1);
 		if (Mod::get()->getSettingValue<bool>("2nd-player")) {
 			Switch(gamemodeid,playLayer->m_player2);
 		};
-		};
 	}
-    else {
-        Switch(0,playLayer->m_player1);
-    }
-        }
 };
 
 class $modify(PauseLayer) {
 void onQuit(CCObject* sender) {
 		PauseLayer::onQuit(sender);
-		l = 10;
+	    l = 10;
 	}
 };
