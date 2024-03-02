@@ -17,16 +17,6 @@
 			"default": true,
 			"description": "Enables/disables mod without restart"
 		},
-		"Gamemode": {
-            "name": "Gamemode",
-            "type": "int",
-            "default": 0,
-            "min": 0,
-            "max": 7,
-            "control": {
-                "slider": false
-            }
-        },
 		"2nd-player": {
 			"name": "2nd player",
 			"type": "bool",
